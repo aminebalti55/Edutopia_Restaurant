@@ -17,4 +17,11 @@ public interface ReportRepository extends JpaRepository<Report, Integer> {
     List<Report> findByTraiteeTrueAndCreatedAtBefore(Date thresholdDate);
     @Query("SELECT r FROM Report r WHERE r.traitee = true AND r.createdAt < :thresholdDate")
     List<Report> findArchivedReports(@Param("thresholdDate") Date thresholdDate);
+
+    List<Report> findByTraiteeFalse();
+    @Query("SELECT COUNT(r) FROM Report r WHERE r.traitee = true")
+    long countTreatedReports();
+
+    @Query("SELECT COUNT(r) FROM Report r WHERE r.traitee = false")
+    long countUntreatedReports();
 }

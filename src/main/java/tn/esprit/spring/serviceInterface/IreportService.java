@@ -1,8 +1,6 @@
 package tn.esprit.spring.serviceInterface;
 import tn.esprit.spring.entities.Report;
-import tn.esprit.spring.entities.Subscription;
 
-import java.util.Date;
 import java.util.List;
 
 public interface IreportService {

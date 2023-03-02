@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,7 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subscription_id")
     private int subscriptionId;
-
+    @Future(message = "Expiration date must be in the future")
     private Date expiritaionDate;
     @Positive(message = "Price must be a positive number")
     private float price;
@@ -39,11 +40,13 @@ public class Subscription {
     @Column(name = "preferred_dish")
     @NotBlank(message = "Preferred dish cannot be blank")
     private String preferredDish;
-
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Payment payment;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     private Restaurant restaurant;
 
