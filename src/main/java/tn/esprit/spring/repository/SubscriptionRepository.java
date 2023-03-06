@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Integer> {
-    @Query("SELECT s FROM Subscription s WHERE s.restaurant = :restaurant")
-    List<Subscription> findByRestaurant(@Param("restaurant") Restaurant restaurant);
+
 
 }

@@ -36,6 +36,11 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.2.0.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>9.0.1</version> <!-- Add the latest version -->
+		</dependency>
 
 		<dependency>
 

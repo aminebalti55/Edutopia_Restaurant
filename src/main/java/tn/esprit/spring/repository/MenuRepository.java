@@ -12,7 +12,6 @@ import java.util.List;
 
 @Repository
 public interface MenuRepository extends JpaRepository<Menu, Integer> {
-    @Query("SELECT m FROM Menu m WHERE m.restaurant = :restaurant AND DATE(m.createdAt) = CURRENT_DATE")
-    Menu findMenuByRestaurantAndTodayDate(@Param("restaurant") Restaurant restaurant);
+
 
 }

@@ -45,7 +45,7 @@ public class ReportService implements IreportService {
     public void deleteReport(long id) {
         reportRepository.deleteById((int) id);
     }
-    @Scheduled(cron = "0 * * * * ?")
+
     public List<Report> getArchivedReports() {
         Date today = new Date();
         Calendar calendar = Calendar.getInstance();
