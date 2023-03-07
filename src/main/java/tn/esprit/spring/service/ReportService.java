@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import tn.esprit.spring.entities.Report;
+import tn.esprit.spring.entities.Type;
+import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.ReportRepository;
 import tn.esprit.spring.serviceInterface.IreportService;
 
@@ -25,10 +27,16 @@ public class ReportService implements IreportService {
     ReportRepository reportRepository;
     @Autowired
     private Validator validator;
-    public Report createReport(Report report) {
+    /* Report createReport(Report report) {
+        report.setTraitee(false);
+        return reportRepository.save(report);
+    }*/
+    public Report createReport(String title, String note, Type type, User user) {
+        Report report = new Report(title, note, type.QUALITE, user);
         report.setTraitee(false);
         return reportRepository.save(report);
     }
+
 
     public Report getReportById(long id) {
         return reportRepository.findById((int) id).orElse(null);

@@ -1,5 +1,6 @@
 package tn.esprit.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,10 +31,11 @@ public class Menu {
     @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
     private Date createdAt= new Date();
+    @JsonIgnore
     @OneToOne(mappedBy = "menu")
     private Restaurant restaurant;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(orphanRemoval = true)
     private List<Dish> dishes;
 
 
