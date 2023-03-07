@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entities.Report;
-import tn.esprit.spring.entities.Type;
-import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.ReportRepository;
 import tn.esprit.spring.service.ReportService;
 
@@ -22,18 +20,11 @@ public class ReportController {
     ReportService reportService;
     @Autowired
     ReportRepository reportRepository;
-    /*@PostMapping("/reports")
+    @PostMapping("/reports")
     public Report createReport(@RequestBody Report report) {
         return reportService.createReport(report);
-    }*/
-    @PostMapping("/create")
-    public ResponseEntity<Report> createReport(@RequestParam String title,
-                                               @RequestParam String note,
-                                               @RequestParam Type type,
-                                               @RequestParam User user) {
-        Report report = reportService.createReport(title, note, type, user);
-        return ResponseEntity.ok(report);
     }
+
     @GetMapping("/reports/{id}")
     public Report getReportById(@PathVariable int id) {
         return reportService.getReportById(id);

@@ -1,6 +1,5 @@
 package tn.esprit.spring.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,10 +27,6 @@ public class Dish {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Ratings ratings;
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "menu_id")
-    private Menu menu;
 
 
 

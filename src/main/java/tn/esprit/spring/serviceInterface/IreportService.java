@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IreportService {
     void deleteReport(long id);
-   /* Report createReport(Report report);*/
+    Report createReport(Report report);
     Report getReportById(long id);
 
     List<Report> getAllReports();

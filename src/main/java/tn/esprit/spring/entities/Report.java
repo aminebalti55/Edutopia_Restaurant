@@ -22,7 +22,7 @@ public class Report implements Serializable {
     private int reportId;
 
     /*@NotBlank(message = "Title cannot be blank")*/
-    @Length(max = 50 , message = "Note cannot exceed 200 characters" )
+    @Length(max = 50,min = 10 , message = "Note cannot exceed 200 characters" )
     private String title;
 
     /* @NotB11nk(message = "Note cannot be blank")*/
@@ -35,14 +35,7 @@ public class Report implements Serializable {
 
     private boolean traitee ;
 
-    public Report(String title, String note, Type type, User user) {
-        this.title = title;
-        this.note = note;
-        this.type = type;
-        this.user = user;
-        this.createdAt = new Date();
-        this.traitee = false;
-    }
+
 
 
     @Enumerated(EnumType.STRING)
