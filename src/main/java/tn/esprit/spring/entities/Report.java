@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,11 +22,11 @@ public class Report implements Serializable {
     @Column(name = "report_id")
     private int reportId;
 
-    /*@NotBlank(message = "Title cannot be blank")*/
-    @Length(max = 50,min = 10 , message = "Note cannot exceed 200 characters" )
+    @NotBlank(message = "Title cannot be blank")
+    @Length(max = 50 , message = "Note cannot exceed 200 characters" )
     private String title;
 
-    /* @NotB11nk(message = "Note cannot be blank")*/
+    @NotBlank (message = "Note cannot be blank")
     @Size(max = 200, message = "Note cannot exceed 200 characters")
     private String note;
 
@@ -35,7 +36,14 @@ public class Report implements Serializable {
 
     private boolean traitee ;
 
-
+    public Report(String title, String note, Type type, User user) {
+        this.title = title;
+        this.note = note;
+        this.type = type;
+        this.user = user;
+        this.createdAt = new Date();
+        this.traitee = false;
+    }
 
 
     @Enumerated(EnumType.STRING)
