@@ -33,6 +33,8 @@ public class User implements Serializable {
 
     private   String email;
 
+    private String phoneNumber;
+
         @Enumerated(EnumType.STRING)
         private  Role role;
 @JsonIgnore
@@ -49,5 +51,8 @@ public class User implements Serializable {
     private QueueEntry queueEntry;
     @Column(name = "position_in_queue")
     private Integer positionInQueue;
+
+    public User(String bruce, String wayne, String s) {
     }
+}
 

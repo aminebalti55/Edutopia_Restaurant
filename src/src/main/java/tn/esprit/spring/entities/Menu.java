@@ -1,13 +1,11 @@
 package tn.esprit.spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,13 +28,14 @@ public class Menu {
 
     @Column(name = "menu_name")
     private String menuName;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Date createdAt;
+    private Date createdAt= new Date();
+    @JsonIgnore
     @OneToOne(mappedBy = "menu")
     private Restaurant restaurant;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(orphanRemoval = true)
     private List<Dish> dishes;
 
 

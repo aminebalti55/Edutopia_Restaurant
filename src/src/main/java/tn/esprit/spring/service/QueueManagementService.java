@@ -47,7 +47,6 @@ public class QueueManagementService implements IQueueManagementService {
     }
     @Override
     public void addUserToQueue(User user) {
-        // Get the current menu
 
         // Create a new QueueEntry for the user
         QueueEntry queueEntry = new QueueEntry();

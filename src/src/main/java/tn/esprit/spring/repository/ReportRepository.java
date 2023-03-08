@@ -24,4 +24,6 @@ public interface ReportRepository extends JpaRepository<Report, Integer> {
 
     @Query("SELECT COUNT(r) FROM Report r WHERE r.traitee = false")
     long countUntreatedReports();
+    List<Report> findByTraiteeFalseAndReportId(int reportId);
+
 }
